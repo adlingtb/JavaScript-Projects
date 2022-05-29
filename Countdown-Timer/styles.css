@@ -20,6 +20,12 @@ h1{
     margin-top: 5%;
 }
 
+input{
+    display: flex;
+    margin: 0px auto;
+
+}
+
 .countdown-div{
     justify-content: center;
     margin-top: 8%;

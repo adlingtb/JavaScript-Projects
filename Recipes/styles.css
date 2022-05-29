@@ -1,0 +1,85 @@
+.navbar{
+    display: flex;
+    background-color: #6a994e;
+    height: 75px;
+}
+.navContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.searchBar{
+    width: 100%;
+    height: 50px;
+    background-color:rgba(192,192,192,0.4);
+    border: none;
+    color: #ffffff;
+    margin: 0px 10px;
+    padding: 10px;
+
+}
+
+.searchIcon i{
+    color: #ffffff;
+    width: 10%;
+    margin: 10px;
+    
+}
+
+.centerWrapper{
+  display: flex;
+  justify-content: center; 
+  margin: 10px;
+}
+
+
+
+.rndMeal{
+  width: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #F2E8CF;
+  padding: 20px;
+  color: #ffffff;
+  border-radius: 10px;
+  max-width: 90vw;
+
+
+}
+
+.rndMeal img{
+  width: 70%
+}
+.rndMeal h2{
+  margin: 10px;
+}
+
+.rndMealLabel{
+  display: block;
+  position: absolute;
+  background-color: #BC4749;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 0px 7px 7px 0px;
+  margin-top: 10px;
+}
+
+
+
+
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #ffffff;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #ffffff;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #ffffff;
+  }
