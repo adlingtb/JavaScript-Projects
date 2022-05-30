@@ -33,6 +33,11 @@
   margin: 10px;
 }
 
+.centerVertical{
+  display: flex;
+  align-items: center;
+}
+
 
 
 .rndMeal{
@@ -57,6 +62,10 @@
   margin: 10px;
 }
 
+.rndMeal i {
+  color: #386641;
+}
+
 .rndMealLabel{
   display: block;
   position: absolute;
@@ -64,7 +73,26 @@
   color: #ffffff;
   padding: 10px;
   border-radius: 0px 7px 7px 0px;
-  margin-top: 10px;
+  margin-top: 15px;
+}
+
+#star{
+  background-color: #386641;
+  margin-top: 70px
+}
+
+#newMeal{
+  background-color: #A7C957;
+  margin-top: 125px
+}
+
+
+#fav img{
+  width: 50px;
+}
+
+#fav h2{
+  font-size: 1rem;
 }
 
 
