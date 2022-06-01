@@ -27,6 +27,12 @@
     
 }
 
+.searchIcon i:hover{
+  color: #386641;
+
+  
+}
+
 .centerWrapper{
   display: flex;
   justify-content: center; 
@@ -81,19 +87,88 @@
   margin-top: 70px
 }
 
+#star:hover{
+  color: orange;
+}
+
 #newMeal{
   background-color: #A7C957;
   margin-top: 125px
 }
 
+#newMeal:hover{
+  color: #386641;
+}
 
-#fav img{
+
+
+
+.favIcon{
+  background-color: #A7C957;
+  display: flex;
+  padding: 10px;
+  margin: 20px 20%;
+
+}
+.favIcon img{
+  width: 80px;
+  margin: 10px;
+}
+
+.favIcon h2{
+  color: #ffffff;
+  padding: 10px;
+  font-size: 1.5rem;
+  
+}
+
+.favIcon a{
+  color: #BC4749;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-left: auto;
+}
+
+
+.recipe{
+
+  overflow-wrap: break-word;
+
+}
+.recipe img{
+  margin: 10px;
+  max-width: 100vw;
+  max-height: 40vh;
+}
+
+.recipe h1{
+  text-align: center;
+}
+
+.recipe a{
+  text-decoration: none;
+  color: #386641;
+}
+
+
+.recipeDetails{
+  margin: 5px;
+  padding: 0px 40px 40px 40px;
+
+}
+
+.recipeSummary{
+  margin: 20px;
+  background-color: #A7C957;
+  color: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.recipeSummary img{
   width: 50px;
 }
 
-#fav h2{
-  font-size: 1rem;
-}
 
 
 

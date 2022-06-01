@@ -21,7 +21,7 @@ async function getRandomMeal(){
     <a id="newMeal" class="rndMealLabel">
         <i  class="fa-solid fa-arrows-rotate"></i>
     </a>
-    <div class="rndMeal">
+    <div class="rndMeal" onclick="openRecipe(${meal.idMeal});">
         <img src="${meal.strMealThumb}" alt="${meal}">
         <div class="centerVertical">
             <h2>${meal.strMeal}</h2>
@@ -97,6 +97,9 @@ async function updateFav(){
 
 
     favEl.innerHTML = "";
+
+    let favContainer = new DocumentFragment();
+
     for(let i = 0; i<currentLS.length; i++){
 
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${currentLS[i]}`);
@@ -104,22 +107,34 @@ async function updateFav(){
         const meal = recipe.meals[0];
 
 
-        let div = favEl.appendChild(document.createElement("div")) 
+        let div = favContainer.appendChild(document.createElement("div")) 
         div.innerHTML = `
-        <img src="${meal.strMealThumb}" alt="${meal.strMeal}">
-        <h2>${meal.strMeal}</h2>
+        <div onclick="openRecipe(${meal.idMeal});" href="./View-Recipe.html" class="favIcon">
+            <img src="${meal.strMealThumb}/preview" alt="${meal.strMeal}">
+            <h2>${meal.strMeal}</h2>
+            <a href="#" onclick=" event.stopImmediatePropagation(); removeLS('${meal.idMeal}'); ">x</a>
+        </div>
+
         `
     }
+    favEl.appendChild(favContainer)
+    
+}
 
 
+function openRecipe(id){
 
+    localStorage.setItem("currentRecipe", id);
 
+    window,open("./View-Recipe.html", "_self");
 }
 
 
 
 getRandomMeal();
 updateFav();
+
+
 
 
 
