@@ -66,11 +66,19 @@
 }
 .rndMeal h2{
   margin: 10px;
+  width: 100%;
 }
 
 .rndMeal i {
   color: #386641;
 }
+
+.rndMeal div div{
+  width: 100%;
+  text-align: center;
+}
+
+
 
 .rndMealLabel{
   display: block;
@@ -127,6 +135,15 @@
   text-decoration: none;
   font-size: 2rem;
   margin-left: auto;
+  margin-right: 10px;
+
+}
+
+.favIcon div{
+  display: flex;
+  align-items: center;
+  width: 100%;
+
 }
 
 
@@ -168,6 +185,38 @@
 .recipeSummary img{
   width: 50px;
 }
+
+#searchResults {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px;
+}
+
+#searchResults li{
+  margin: 10px;
+}
+
+.searchResultItem{
+  display: flex;
+  background-color: #dfe8ca;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100px;
+}
+
+.searchResultItem h2{
+  margin: 10px;
+}
+
+.searchResultItem img{
+  width: 100px;
+  height: 100px;
+}
+
+.resultsDiv{
+  display: flexbox;
+}
+  
 
 
 

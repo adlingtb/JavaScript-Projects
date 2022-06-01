@@ -1,0 +1,9 @@
+
+
+
+
+--------Recipe------------
+
+- If you come accross the same recipe again, you can add it to the favorites twice. The site should check if it alreaduy exists in the array before adding it
+    -Also the star should be solid if it already exists
+-

@@ -22,10 +22,11 @@ async function getRandomMeal(){
         <i  class="fa-solid fa-arrows-rotate"></i>
     </a>
     <div class="rndMeal" onclick="openRecipe(${meal.idMeal});">
-        <img src="${meal.strMealThumb}" alt="${meal}">
-        <div class="centerVertical">
-            <h2>${meal.strMeal}</h2>
-
+        <div style="display: contents;">
+            <img src="${meal.strMealThumb}" alt="${meal}">
+            <div class="centerVertical">
+                <h2>${meal.strMeal}</h2>
+            </div>
         </div>
     </div>
 
@@ -111,8 +112,10 @@ async function updateFav(){
         div.innerHTML = `
         <div onclick="openRecipe(${meal.idMeal});" href="./View-Recipe.html" class="favIcon">
             <img src="${meal.strMealThumb}/preview" alt="${meal.strMeal}">
-            <h2>${meal.strMeal}</h2>
-            <a href="#" onclick=" event.stopImmediatePropagation(); removeLS('${meal.idMeal}'); ">x</a>
+            <div>
+                <h2>${meal.strMeal}</h2>
+                <a href="#" onclick=" event.stopImmediatePropagation(); removeLS('${meal.idMeal}'); ">&#x2715;</a>
+            </div>
         </div>
 
         `
@@ -122,12 +125,7 @@ async function updateFav(){
 }
 
 
-function openRecipe(id){
 
-    localStorage.setItem("currentRecipe", id);
-
-    window,open("./View-Recipe.html", "_self");
-}
 
 
 
