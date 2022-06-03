@@ -1,0 +1,107 @@
+body{
+    background-color: #1D3E53;
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ececec;
+
+}
+
+
+.navbar{
+    background-color: #476D7C;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar input{
+    background-color: rgb(255, 255, 255, 0.2);
+    border: none;
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+    text-align: center;
+    
+}
+
+.navbar input::placeholder{
+    color: #ececec;
+}
+
+.allMedia{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: center;
+    
+}
+
+.mediaContainer{
+    width: 250px;
+    max-width: 100vw;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    
+
+}
+
+.mediaContainer img{
+    width: 100%;
+    margin: 0px;
+
+}
+
+.mediaDiv{
+    background-color: #476D7C;
+    height: 80px;
+    min-height: 100px;
+    width: 100%;
+    padding: 4px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mediaContainer h3{
+    padding: 10px;
+    text-align: center;
+    width: 80%;
+    
+
+    
+}
+
+.mediaContainer span{
+    background-color: #1D3E53;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.mediaDesc{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background-color: rgb(29, 62, 83, 0.8);
+    display: none;
+
+    
+}
+.mediaDesc p{
+    margin: 10px;
+}
+
+
+
+.mediaImageCont:hover .mediaDesc{
+    display: flex;
+}
+
+.mediaImageCont{
+    position: relative;
+}
