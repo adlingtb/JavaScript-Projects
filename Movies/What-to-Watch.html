@@ -12,11 +12,27 @@
     
     <div class="findSomethingCont">
         <h1>Find something to watch</h1>
-        <h2>First you pick, then pass the device to person 2</h2>
         <div>
-            <a>Person 1</a>
-            <a>Person 2</a>
+            <div class="formDiv">
+                <h2>What are you watching?</h2>
+                    <div>
+                        <label for="movie-radio">Movie</label>
+                        <input type="radio" name="type" id="movie-radio" value="Movie" />
+                    </div>
+                    <div>
+                        <label for="tv-radio">TV Show</label>
+                        <input type="radio" name="type" id="tv-radio" value="TV Show" />
+                    </div>
+                    <a class="formBtn" id="mediaTypeBtn">Continue</a>
+            </div>
+            <div class="formDiv">
+                <h2>How many of you are watching?</h2>
+                <input id="numberOfPlayers" placeholder="Number of Players">
+            </div>
         </div>
+
+        <h2>First you pick, then pass the device to the next person</h2>
+        <div id="persons"></div>
         <div id="selector" class="selector"></div>
         <div id="mathces">
             <h2>Your matches will show here once all of you have picked</h2>

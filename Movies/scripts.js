@@ -71,8 +71,56 @@ function addToPage(media, title){
     contentEl.appendChild(content);
 }
 
-async function getSelection(type, person){   
-    let response = await fetch(`${APIURL}${type}/popular${APIKEY}&language=en-US&page=${currentPage}`)
+
+
+let numberOfPlayers = document.getElementById("numberOfPlayers");
+let mediaType;
+
+document.getElementById("mediaTypeBtn").addEventListener("click", function(){
+    if(document.getElementById("movie-radio").checked){
+        mediaType = "movie"
+    }else if(document.getElementById("tv-radio").checked){
+        mediaType = "tv"
+    }
+})
+
+numberOfPlayers.onkeydown = (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault()
+      let arr = [];
+      for(i=0; i<numberOfPlayers.value; i++){
+        arr.push([])
+      }
+      localStorage.setItem("selections", JSON.stringify(arr))
+
+      let persons = document.getElementById("persons")
+      let frag = new DocumentFragment();
+
+      for(i=0; i<numberOfPlayers.value; i++){
+        let item = frag.appendChild(document.createElement('a'));
+        item.classList.add("person");
+        item.dataset.person = `${i}`;
+        item.innerHTML = `Person ${i+1}`   
+        }
+
+      persons.appendChild(frag);
+    }
+  };
+
+
+let currentSelection = 0;
+
+
+
+
+document.getElementById("persons").addEventListener("click", function(e){
+    i=0;
+    getSelection(e.target.dataset.person)
+})
+
+async function getSelection(person){ 
+
+    let response = await fetch(`${APIURL}${mediaType}/popular${APIKEY}&language=en-US&page=${currentPage}`)
     let responseData = await response.json();
     let media = responseData.results;
 
@@ -84,8 +132,7 @@ async function getSelection(type, person){
 
     let src;
     let title;
-    let i = 0;
-    let m = media[0];
+    let m = media[i];
     if(m.poster_path===null){
         src="./img/nomedia.png"
     }else{
@@ -109,13 +156,43 @@ async function getSelection(type, person){
 
     document.getElementById("like").addEventListener("click", function(){
 
-        localStorage.setItem(`Person${person}`, m.id )
+        //localStorage.setItem(`Person${person}`, m.id )
+        addLS(person, m.id)
         i++;
-        
+        item.innerHTML = "";
+        getSelection(person)
+
+    })
+
+    document.getElementById("dislike").addEventListener("click", function(){
+
+        i++;
+        item.innerHTML = "";
+        getSelection(person)
 
     })
 
 }
+
+function addLS(person, id){
+    let currentLS = JSON.parse(localStorage.getItem("selections"));
+    let currentPerson = currentLS[person];
+    let selection = [id]; 
+    let merge;
+    
+    if(currentLS === null){
+        merge = selection;
+    }else{
+        merge = [].concat(currentPerson, selection);
+    }
+
+    currentLS[person] = merge;
+
+    localStorage.setItem("selections", JSON.stringify(currentLS));
+    
+
+}
+
 
 
 

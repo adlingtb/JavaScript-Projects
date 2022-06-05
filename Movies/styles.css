@@ -165,6 +165,41 @@ body{
     text-align: center;
 
 }
+.formDiv{
+    background-color: #476D7C;
+    padding: 10px;
+    margin: 20px 0px;
+}
+
+.formDiv input{
+    margin: 10px;
+}
+
+
+.formBtn{
+    display: flex;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #1D3E53;
+    border-radius: 10px;
+    width: fit-content
+}
+
+
+#persons{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.person{
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #476D7C;
+    border-radius: 20px;
+}
+
 
 .selector{
     background-color: #476D7C;
