@@ -22,13 +22,13 @@
     <script src="./nav.js"></script>
     <script src="./scripts.js"></script>
 
-    <script>getPopular("movie");
+    <script>getNew("movie");
     
     window.onscroll = function() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         currentPage++
         console.log(currentPage)
-        getPopular("movie");
+        getNew("movie");
     }
 };
 

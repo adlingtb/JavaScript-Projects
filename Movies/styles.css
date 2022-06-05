@@ -7,13 +7,16 @@ body{
 
 }
 
+#heading{
+    text-align: center;
+}
+
 
 .navbar{
     background-color: #476D7C;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+    padding: 20px 20px 0px 20px;
 }
+
 
 .navbar input{
     background-color: rgb(255, 255, 255, 0.2);
@@ -29,6 +32,49 @@ body{
     color: #ececec;
 }
 
+.navButtons{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+.navButtons a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.navBtn{
+    padding: 20px 30px;
+    position: relative;
+}
+
+.navBtn:hover .navBtnDropdown{
+    display: flex;
+}
+
+.navBtnDropdown{
+    display: none; 
+    flex-direction: column;
+    position: absolute;
+    left: 0px;
+    z-index: 1;
+    padding: 10px;
+    background-color: #476D7C;
+}
+
+.navBtnDropdown a{
+    padding: 10px;
+}
+.navBtnDropdown a:hover {
+    background-color: #1D3E53;
+}
+
+#searchBar{
+    color: #ececec;
+}
+
+
 .allMedia{
     display: flex;
     flex-wrap: wrap;
@@ -43,14 +89,13 @@ body{
     margin: 10px;
     display: flex;
     flex-wrap: wrap;
-    
-
 }
 
 .mediaContainer img{
     width: 100%;
     margin: 0px;
-
+    height: 100%;
+    object-fit: cover;
 }
 
 .mediaDiv{
@@ -63,15 +108,14 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    
 }
+
 
 .mediaContainer h3{
     padding: 10px;
     text-align: center;
     width: 80%;
-    
-
-    
 }
 
 .mediaContainer span{
@@ -89,11 +133,20 @@ body{
     left: 0px;
     background-color: rgb(29, 62, 83, 0.8);
     display: none;
+    overflow: hidden;
+    
 
     
 }
 .mediaDesc p{
     margin: 10px;
+    overflow: auto;
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+}
+
+.mediaDesc p::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
 }
 
 
@@ -104,4 +157,33 @@ body{
 
 .mediaImageCont{
     position: relative;
+    
 }
+
+
+.findSomethingCont{
+    text-align: center;
+
+}
+
+.selector{
+    background-color: #476D7C;
+    width: 80%;
+    max-width: 600px;
+    
+    margin: 0px auto;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selector a{
+    padding: 10px;
+}
+
+.selector img{
+    width: 50%;
+    margin: 10px;
+}
+
