@@ -11,6 +11,7 @@ body{
     text-align: center;
 }
 
+#nav{margin: 0;}
 
 .navbar{
     background-color: #476D7C;
@@ -165,6 +166,10 @@ body{
     text-align: center;
 
 }
+
+.findSomethingCont a{
+    cursor: pointer;
+}
 .formDiv{
     background-color: #476D7C;
     padding: 10px;
@@ -215,6 +220,9 @@ body{
 
 .selector a{
     padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 20px;
 }
 
 .selector img{
@@ -222,3 +230,43 @@ body{
     margin: 10px;
 }
 
+#like{
+    background-color: #77c477;
+}
+
+#dislike{
+    background-color: #ce8282;
+}
+
+#matches{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
+}
+
+.finalMatchesDiv{
+    background-color: #1D3E53;
+    margin: 10px;
+    width: 400px;
+    max-width: 90vw;    
+    
+}
+
+.finalMatchesDiv img{
+    width: 400px;
+    max-width: 90vw;   
+}
+
+.finalMatchesDiv h4{
+    margin-top: 10px;
+}
+
+.hidden{
+    display: none;
+}
+
+.selected{
+    background-color: #4087a3;
+}

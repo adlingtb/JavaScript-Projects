@@ -39,7 +39,7 @@ function addToPage(media, title){
     let contentEl = document.getElementById("content");
     document.getElementById("heading").innerText = title
  
-    for(i=0;i<media.length;i++){
+    for(let i=0;i<media.length;i++){
         let m = media[i];
         let src;
         let title;
@@ -73,8 +73,17 @@ function addToPage(media, title){
 
 
 
-let numberOfPlayers = document.getElementById("numberOfPlayers");
+async function getContentByID(id){
+    let response = await fetch(`${APIURL}${mediaType}/${id}${APIKEY}`)
+    let responseData = await response.json();
+    let media = await responseData;
+    console.log(media.original_title)
+    return await media;
+}
+
 let mediaType;
+let numberOfWatchers = document.getElementById("numberOfWatchers");
+
 
 document.getElementById("mediaTypeBtn").addEventListener("click", function(){
     if(document.getElementById("movie-radio").checked){
@@ -82,13 +91,25 @@ document.getElementById("mediaTypeBtn").addEventListener("click", function(){
     }else if(document.getElementById("tv-radio").checked){
         mediaType = "tv"
     }
+
 })
 
-numberOfPlayers.onkeydown = (e) => {
+document.getElementById("mediaTypeBtn").addEventListener("click",function(){
+    let div = document.getElementById("mediaTypeDiv")
+    if(mediaType){
+        div.classList.add("hidden");
+        document.getElementById("watchersDiv").classList.remove("hidden");
+    }else{
+        document.getElementById("mediaTypeRequired").innerText = "required"
+    }
+    
+})
+
+numberOfWatchers.onkeydown = (e) => {
     if (e.keyCode === 13) {
       e.preventDefault()
       let arr = [];
-      for(i=0; i<numberOfPlayers.value; i++){
+      for(let i=0; i<numberOfWatchers.value; i++){
         arr.push([])
       }
       localStorage.setItem("selections", JSON.stringify(arr))
@@ -96,7 +117,7 @@ numberOfPlayers.onkeydown = (e) => {
       let persons = document.getElementById("persons")
       let frag = new DocumentFragment();
 
-      for(i=0; i<numberOfPlayers.value; i++){
+      for(let i=0; i<numberOfWatchers.value; i++){
         let item = frag.appendChild(document.createElement('a'));
         item.classList.add("person");
         item.dataset.person = `${i}`;
@@ -104,6 +125,9 @@ numberOfPlayers.onkeydown = (e) => {
         }
 
       persons.appendChild(frag);
+
+      document.getElementById("watchersDiv").classList.add("hidden");
+      document.getElementById("personDiv").classList.remove("hidden");
     }
   };
 
@@ -114,7 +138,8 @@ let currentSelection = 0;
 
 
 document.getElementById("persons").addEventListener("click", function(e){
-    i=0;
+    currentSelection=0;
+    
     getSelection(e.target.dataset.person)
 })
 
@@ -124,15 +149,12 @@ async function getSelection(person){
     let responseData = await response.json();
     let media = responseData.results;
 
-    console.log(media)
-
-
     let frag = new DocumentFragment();
     let selectorEl = document.getElementById("selector");
 
     let src;
     let title;
-    let m = media[i];
+    let m = media[currentSelection];
     if(m.poster_path===null){
         src="./img/nomedia.png"
     }else{
@@ -155,10 +177,8 @@ async function getSelection(person){
     selectorEl.appendChild(frag);
 
     document.getElementById("like").addEventListener("click", function(){
-
-        //localStorage.setItem(`Person${person}`, m.id )
         addLS(person, m.id)
-        i++;
+        currentSelection++;
         item.innerHTML = "";
         getSelection(person)
 
@@ -166,7 +186,7 @@ async function getSelection(person){
 
     document.getElementById("dislike").addEventListener("click", function(){
 
-        i++;
+        currentSelection++;
         item.innerHTML = "";
         getSelection(person)
 
@@ -192,6 +212,79 @@ function addLS(person, id){
     
 
 }
+
+document.getElementById("matchesBtn").addEventListener("click", async function(){
+    let selections = JSON.parse(localStorage.getItem("selections"));
+    let num = numberOfWatchers.value;
+    let allSelections = [];
+
+    //adds all user selections to a single array
+    for(let i=0;i<num;i++){
+        allSelections.push(...selections[i])
+    }
+
+    //gets just the unique selections
+    let allUnique = [...new Set(allSelections)];
+
+
+    let matches = [];
+
+    for(let i=0; i<allUnique.length; i++){
+        let x = [];
+        x.push(checkOccurrence(allSelections, allUnique[i]), allUnique[i])
+        matches.push(x)
+    }
+
+    matches.sort(function(a, b) {
+        return b[0] - a[0];
+      });
+
+    console.log(matches);
+
+    let frag = new DocumentFragment();
+
+    //creates a summary of the most popular selections by checking which id occured the most times in people's selections
+    for(let i=0; i<matches.length; i++){
+        media =  await getContentByID(matches[i][1]);
+        console.log(media);
+
+        let src;
+        let title;
+        if(media.poster_path===null){
+            src="./img/nomedia.png"
+        }else{
+            src = `${IMGPATH}w500${media.poster_path}`
+        }
+    
+        if(media.original_title==null){
+            title = media.name;
+        }else{
+            title = media.original_title;
+        }
+        let item = frag.appendChild(document.createElement('div'));
+        item.innerHTML = `
+        <img src="${src}" alt="${title}">
+        <h3>${title}</h3>
+        <h4>Chosen by ${matches[i][0]} watchers</<h4>`;
+        item.classList.add("finalMatchesDiv")
+    }
+
+    let matchesEl = document.getElementById("matches");
+    matchesEl.innerHTML = ""
+    matchesEl.appendChild(frag);
+})
+
+function checkOccurrence(arr, val){
+    let count = 0;
+    arr.forEach(function(v){
+        if(v === val){
+            count++
+        }
+    })
+    return count;
+}
+
+
 
 
 

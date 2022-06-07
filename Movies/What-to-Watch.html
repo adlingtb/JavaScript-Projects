@@ -13,7 +13,7 @@
     <div class="findSomethingCont">
         <h1>Find something to watch</h1>
         <div>
-            <div class="formDiv">
+            <div class="formDiv" id="mediaTypeDiv">
                 <h2>What are you watching?</h2>
                     <div>
                         <label for="movie-radio">Movie</label>
@@ -24,23 +24,29 @@
                         <input type="radio" name="type" id="tv-radio" value="TV Show" />
                     </div>
                     <a class="formBtn" id="mediaTypeBtn">Continue</a>
+                    <P id="mediaTypeRequired"></P>
             </div>
-            <div class="formDiv">
+            <div class="formDiv hidden" id="watchersDiv">
                 <h2>How many of you are watching?</h2>
-                <input id="numberOfPlayers" placeholder="Number of Players">
+                <input id="numberOfWatchers" placeholder="Number of Watchers">
             </div>
         </div>
 
-        <h2>First you pick, then pass the device to the next person</h2>
-        <div id="persons"></div>
+        <div class="hidden" id="personDiv">
+            <h2>First you pick, then pass the device to the next person</h2>
+            <div id="persons"></div>
+        </div>
         <div id="selector" class="selector"></div>
-        <div id="mathces">
-            <h2>Your matches will show here once all of you have picked</h2>
+        <div class="formDiv">
+            <h2>Your Matches</h2>
+            <a class="formBtn" id="matchesBtn">See mathces</a>
+            <div id="matches">You have no matches yet. Fill out the questions above to get your personalised selections!</div>
         </div>
     </div>
 
 
     <script src="./nav.js"></script>
     <script src="./scripts.js"></script>
+   
 </body>
 </html>
