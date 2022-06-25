@@ -26,7 +26,7 @@
 
     
     window.onscroll = function() {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    if ((window.innerHeight + window.scrollY +100) >= document.body.offsetHeight) {
         currentPage++
         console.log(currentPage)
         getPopular("movie");

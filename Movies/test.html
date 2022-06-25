@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .exampleItem{
+            width: 100px;
+            height: 100px;
+            background-color: lightgray;
+            margin: 10px;
+            
+        }
+        .exampleCont{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .palette{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center" id="palette">
+        <div class="palette" style="background-color: red;" id="red"></div>
+        <div class="palette" style="background-color: green;" id="green"></div>
+        <div class="palette" style="background-color: yellow;" id="yellow"></div>
+        <div class="palette" style="background-color: purple;" id="purple"></div>
+        <div class="palette" style="background-color: blue;" id="blue"></div>
+    </div>
+
+    <div class="exampleCont" id="cont"></div>
+
+
+
+<script>
+    let cont = document.getElementById("cont");
+
+    let color = "";
+
+    //generate 300 divs with incremented ids
+    for(let i = 0; i < 300; i++){
+        cont.appendChild(document.createElement("div")).innerHTML = 
+        `<div class="exampleItem" id="square${i}"></div>`
+    }
+
+    //changes colour of the div that was clicked on by passing the id to changeCol function
+    cont.addEventListener("click", function(e){
+        changeCol(e.path[0].id)
+    })
+    
+    //changes color variable to the id of the div that was clicked on
+    document.getElementById("palette").addEventListener("click", function(e){
+        color = e.path[0].id;
+    })
+    
+    //change background colour style to the color variable
+    function changeCol(id){
+        let el = document.getElementById(id);
+        el.style.backgroundColor = color;
+    }
+</script>
+</body>
+</html>
+

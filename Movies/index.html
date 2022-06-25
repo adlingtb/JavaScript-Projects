@@ -8,28 +8,31 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <div>
-        <nav id="nav"></nav>
-            <h1 id="heading"></h1>
-    </div>
+    <nav id="nav"></nav>
+
+
+
+
+    <div >
+        <h1 id="heading"></h1>
         <div id="content" class="allMedia"></div>
+    </div>
 
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="./nav.js"></script>
     <script src="./scripts.js"></script>
+
     <script>getPopular("movie");
     
-    
-        window.onscroll = function() {
-        if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-            currentPage++
-            console.log(currentPage)
-            getPopular("movie");
-        }
-        };
-        </script>
+    window.onscroll = function() {
+    if ((window.innerHeight + window.scrollY +100) >= document.body.offsetHeight) {
+        currentPage++
+        console.log(currentPage)
+        getPopular("movie");
+    }
+};
 
-
+    </script>
 </body>
 </html>

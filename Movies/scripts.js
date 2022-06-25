@@ -39,10 +39,12 @@ function addToPage(media, title){
     let contentEl = document.getElementById("content");
     document.getElementById("heading").innerText = title
  
+    console.log(media)
     for(let i=0;i<media.length;i++){
         let m = media[i];
         let src;
         let title;
+        console.log(m)
         if(m.poster_path===null){
             src="./img/nomedia.png"
         }else{
@@ -70,6 +72,8 @@ function addToPage(media, title){
     }
     contentEl.appendChild(content);
 }
+
+
 
 
 
@@ -121,7 +125,13 @@ numberOfWatchers.onkeydown = (e) => {
         let item = frag.appendChild(document.createElement('a'));
         item.classList.add("person");
         item.dataset.person = `${i}`;
-        item.innerHTML = `Person ${i+1}`   
+        item.innerHTML = `Person ${i+1}`;
+        if (i==0){
+            item.dataset.disabled = "false";
+        }else{
+            item.dataset.disabled = "true";
+        }
+
         }
 
       persons.appendChild(frag);
@@ -139,8 +149,11 @@ let currentSelection = 0;
 
 document.getElementById("persons").addEventListener("click", function(e){
     currentSelection=0;
+    if (e.target.dataset.disabled == "false"){
+        getSelection(e.target.dataset.person)
+    }
     
-    getSelection(e.target.dataset.person)
+    
 })
 
 async function getSelection(person){ 
@@ -223,9 +236,9 @@ document.getElementById("matchesBtn").addEventListener("click", async function()
         allSelections.push(...selections[i])
     }
 
+
     //gets just the unique selections
     let allUnique = [...new Set(allSelections)];
-
 
     let matches = [];
 
@@ -235,11 +248,11 @@ document.getElementById("matchesBtn").addEventListener("click", async function()
         matches.push(x)
     }
 
+    console.log("matches before sort", matches)
     matches.sort(function(a, b) {
         return b[0] - a[0];
       });
 
-    console.log(matches);
 
     let frag = new DocumentFragment();
 
